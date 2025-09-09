@@ -1,0 +1,12 @@
+{
+  email you@example.com
+}
+
+mcp.example.com {
+  encode gzip
+  reverse_proxy unix//var/run/secops-mcp.sock
+  log {
+    output stdout
+    format json
+  }
+}

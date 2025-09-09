@@ -1,0 +1,28 @@
+[Unit]
+Description=SecOps MCP Server (ASGI)
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+WorkingDirectory=/opt/secops-mcp
+Environment=PYTHONUNBUFFERED=1
+Environment=PYTHONPATH=/opt/secops-mcp
+Environment=MCP_MAX_CONCURRENCY=2
+ExecStart=/opt/secops-mcp/.venv/bin/python -m hypercorn main:app --bind unix:/run/secops-mcp/secops-mcp.sock --workers 4 --keep-alive 120 --backlog 2048 --graceful-timeout 30 --read-timeout 300 --max-requests 1000 --max-requests-jitter 100 --log-level info
+ExecStartPre=/bin/mkdir -p /run/secops-mcp
+ExecStartPre=/bin/rm -f /run/secops-mcp/secops-mcp.sock
+ExecStartPost=/bin/sh -lc 'for i in $(seq 1 100); do [ -S /run/secops-mcp/secops-mcp.sock ] && break; sleep 0.05; done; chmod 0660 /run/secops-mcp/secops-mcp.sock && chgrp www-data /run/secops-mcp/secops-mcp.sock'
+Restart=always
+RestartSec=5
+TimeoutStopSec=30
+KillSignal=SIGINT
+LimitNOFILE=65535
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/secops-mcp
+
+[Install]
+WantedBy=multi-user.target
