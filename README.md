@@ -5,7 +5,6 @@ Perfecto 💯, aquí tienes el README completo listo para meterlo en tu repo com
 [![FastMCP](https://img.shields.io/badge/FastMCP-Compatible-green)](https://gofastmcp.com)  
 Servidor MCP para automatizar flujos de ciberseguridad con **n8n**, **Docker** y **agentes de IA**.
 
----
 
 ## 📌 Descripción
 
@@ -14,7 +13,7 @@ Permite exponer herramientas clásicas de pentesting como **Nmap, Nuclei, SQLMap
 
 De esta forma, cualquier **agente MCP-compatible** (como `n8n` o integraciones personalizadas) puede invocar escaneos, recibir resultados en JSON y orquestar pipelines de seguridad de manera **asíncrona, segura y escalable**.
 
----
+
 
 ## ⚡ Características
 
@@ -26,7 +25,6 @@ De esta forma, cualquier **agente MCP-compatible** (como `n8n` o integraciones p
 - ✅ **Endpoints de health y readiness** (`/health`, `/ready`)  
 - ✅ **Diseñado para producción** con `Hypercorn + Unix Socket` y `Caddy` como reverse proxy  
 
----
 
 ## 🛠️ Herramientas soportadas
 
@@ -40,7 +38,7 @@ De esta forma, cualquier **agente MCP-compatible** (como `n8n` o integraciones p
 - [x] `httpx` – sondeo HTTP masivo  
 - [x] `tlsx` – análisis de certificados TLS  
 
----
+
 
 ## 🚀 Despliegue rápido
 
@@ -70,7 +68,7 @@ python main.py
 
 Por defecto escucha en http://0.0.0.0:8080.
 
-⸻
+
 
 🧩 Integración con n8n
 
@@ -87,26 +85,22 @@ curl -X POST https://mcp.tu-dominio/mcp \
   -d '{"type":"ListToolsRequest"}'
 
 
-⸻
+
 
 📊 Roadmap
 	•	Añadir más herramientas de análisis (gobuster, hydra, etc.)
 	•	Dashboard web ligero para monitorización
 	•	Soporte multi-tenant con Supabase
 
-⸻
 
 🤝 Contribuciones
 
 Este repo es público para la comunidad.
 Se aceptan PRs con mejoras de seguridad, optimización de wrappers y soporte de nuevas herramientas.
 
-⸻
+
 
 📜 Licencia
 
 MIT License © 2025 AISAC / CISEC
 
----
-
-¿Quieres que te lo prepare directamente como archivo `README.md` dentro del repo `secops-mcp-public` para que solo hagas `git add . && git commit -m "add readme" && git push`?
